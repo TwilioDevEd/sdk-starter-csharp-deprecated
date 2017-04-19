@@ -1,4 +1,5 @@
 # Twilio SDK Starter Application for C#
+[![Build Status](https://travis-ci.org/joliveros/sdk-starter-csharp.svg?branch=master)](https://travis-ci.org/joliveros/sdk-starter-csharp)
 
 This sample project demonstrates how to use Twilio APIs in a C# web
 application. Once the app is up and running, check out [the home page](http://localhost:3000)
