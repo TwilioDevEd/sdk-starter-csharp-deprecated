@@ -36,7 +36,7 @@ if (!navigator.webkitGetUserMedia && !navigator.mozGetUserMedia) {
 // from the room, if joined.
 window.addEventListener('beforeunload', leaveRoomIfJoined);
 
-$.getJSON('twilio/token', function(data) {
+$.getJSON('/token', function(data) {
   identity = data.identity;
 
   document.getElementById('room-controls').style.display = 'block';

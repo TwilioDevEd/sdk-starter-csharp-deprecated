@@ -8,11 +8,11 @@ to see which demos you can run. You'll find examples for [Chat](https://www.twil
 
 Let's get started!
 
-## Setup .NET Core SDK
+## Setup .NET Core SDK (If you don't have Visual Studio 2015/2017)
 
 1. Install [.NET Core](https://www.microsoft.com/net/core).
 
-## Restore Project Dependencies
+### Restore Project Dependencies
 ```bash
 dotnet restore
 ```
@@ -72,7 +72,13 @@ You will need to create a Notify Service through the [Twilio Console](https://ww
 
 ## Run The Application
 
-```
+### Visual Studio
+
+Open `sdkstarter.sln` and hit *F5*
+
+### OS X or Linux
+
+```bash
 cd src/sdkstarter
 dotnet run
 ```

@@ -1,8 +1,9 @@
 $(function() {
 
     $('#sendNotificationButton').on('click', function() {
-        var identity = $('#identityInput').val();
-        $.post('twilio/send-notification/' + identity, function(response) {
+        $.post('/send-notification', {
+           identity: $('#identityInput').val()
+        }, function(response) {
             $('#identityInput').val('');
             $('#message').html(response.message);
             console.log(response);

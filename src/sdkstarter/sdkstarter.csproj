@@ -11,11 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\index_html" />
+    <Content Include="public\index.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="wwwroot\**\*">
+    <None Update="public\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>

@@ -10,27 +10,27 @@ namespace sdkstarter.Controllers
     {
         public ActionResult Index()
         {
-            return View("~/Views/Home/Index.cshtml");
+            return View("~/public/index.html");
         }
 
         public ActionResult Video()
         {
-            return View("~/Views/Home/Video.cshtml");
+            return View("~/public/video/index.html");
         }
 
         public ActionResult Chat()
         {
-            return View("~/Views/Home/Chat.cshtml");
+            return View("~/public/chat/index.html");
         }
 
         public ActionResult Notify()
         {
-            return View("~/Views/Home/Notify.cshtml");
+            return View("~/public/notify/index.html");
         }
 
         public ActionResult Sync()
         {
-            return View("~/Views/Home/Sync.cshtml");
+            return View("~/public/sync/index.html");
         }
 
         public ActionResult Error()

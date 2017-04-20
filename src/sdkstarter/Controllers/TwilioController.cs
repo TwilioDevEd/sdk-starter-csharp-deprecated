@@ -24,13 +24,13 @@ namespace sdkstarter.Controllers
             );
         }
 
-        [HttpGet("twilio/config")]
+        [HttpGet("/config")]
         public JsonResult Config()
         {
             return new JsonResult(_appSettings);
         }
 
-        [HttpGet("twilio/token")]
+        [HttpGet("/token")]
         public JsonResult Token()
         {
             // This can be tracked internally by your web app.
@@ -86,7 +86,7 @@ namespace sdkstarter.Controllers
             });
         }
 
-        [HttpPost("twilio/register")]
+        [HttpPost("/register")]
         public JsonResult Register([FromBody] RegisterRequest request)
         {
             CreateNotificationServiceBinding(request);
@@ -98,7 +98,7 @@ namespace sdkstarter.Controllers
             );
         }
 
-        [HttpPost("twilio/send-notification/{identity}")]
+        [HttpPost("/send-notification/{identity}")]
         public JsonResult SendNotification(string identity)
         {
             CreateNotification(identity);
