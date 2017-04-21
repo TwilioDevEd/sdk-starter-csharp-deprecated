@@ -10,7 +10,7 @@ namespace sdkstarter.Controllers
 {
     [Produces("application/json")]
     public class TwilioController : Controller
-    { 
+    {
         private readonly AppSettings _appSettings;
 
         public TwilioController(IOptions<AppSettings> appSettings)
@@ -76,7 +76,8 @@ namespace sdkstarter.Controllers
                 _appSettings.TWILIO_ACCOUNT_SID,
                 _appSettings.TWILIO_API_KEY,
                 _appSettings.TWILIO_API_SECRET,
-                identity
+                identity,
+                grants: grants
             ).ToJwt();
 
             return new JsonResult(new Dictionary<string, string>()
@@ -129,7 +130,7 @@ namespace sdkstarter.Controllers
         {
             var bindingTypeStr = TitleCaseString(request.BindingType);
             var bindingType = (BindingResource.BindingTypeEnum) Enum.Parse(typeof(BindingResource.BindingTypeEnum),
-                bindingTypeStr); 
+                bindingTypeStr);
 
             return BindingResource.Create(
                 _appSettings.TWILIO_NOTIFICATION_SERVICE_SID,
