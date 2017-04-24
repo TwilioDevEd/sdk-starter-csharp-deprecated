@@ -18,8 +18,9 @@ namespace sdkstarter.Controllers
             _appSettings = appSettings.Value;
 
             TwilioClient.Init(
-                _appSettings.TWILIO_ACCOUNT_SID,
-                _appSettings.TWILIO_API_SECRET
+                _appSettings.TWILIO_API_KEY,
+                _appSettings.TWILIO_API_SECRET,
+                _appSettings.TWILIO_ACCOUNT_SID
             );
         }
 
