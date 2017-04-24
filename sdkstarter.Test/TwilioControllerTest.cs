@@ -98,8 +98,13 @@ namespace sdkstarter.Test
             controller.Setup(x => x.CreateNotification(It.IsAny<string>()))
                 .Returns(NotificationResource.FromJson(""));
 
+            var sendNotificationRequest = new SendNotificationRequest()
+            {
+                identity = "0000001"
+            };
+
             // Act
-            var result = controller.Object.SendNotification("0000001");
+            var result = controller.Object.SendNotification(sendNotificationRequest);
 
             // Assert
             var sendNotificationResult = (Dictionary<string, string>)result.Value;

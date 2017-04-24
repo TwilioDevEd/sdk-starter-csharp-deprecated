@@ -18,9 +18,8 @@ namespace sdkstarter.Controllers
             _appSettings = appSettings.Value;
 
             TwilioClient.Init(
-                _appSettings.TWILIO_API_KEY,
-                _appSettings.TWILIO_API_SECRET,
-                _appSettings.TWILIO_ACCOUNT_SID
+                _appSettings.TWILIO_ACCOUNT_SID,
+                _appSettings.TWILIO_API_SECRET
             );
         }
 
@@ -99,10 +98,10 @@ namespace sdkstarter.Controllers
             );
         }
 
-        [HttpPost("/send-notification/{identity}")]
-        public JsonResult SendNotification(string identity)
+        [HttpPost("/send-notification/")]
+        public JsonResult SendNotification(SendNotificationRequest request)
         {
-            CreateNotification(identity);
+            CreateNotification(request.identity);
 
             return new JsonResult(new Dictionary<string, string>()
             {
