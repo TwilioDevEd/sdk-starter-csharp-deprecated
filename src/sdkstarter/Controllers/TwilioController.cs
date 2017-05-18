@@ -39,16 +39,12 @@ namespace sdkstarter.Controllers
 
             var grants = new HashSet<IGrant>();
 
-            if (_appSettings.TWILIO_CONFIGURATION_SID != String.Empty)
+            var videoGrant = new VideoGrant
             {
-                var conversationGrant =
-                    new ConversationsGrant
-                    {
-                        ConfigurationProfileSid = _appSettings.TWILIO_CONFIGURATION_SID
-                    };
+                Room = "default room"
+            };
 
-                grants.Add(conversationGrant);
-            }
+            grants.Add(videoGrant);
 
             if (_appSettings.TWILIO_CHAT_SERVICE_SID != String.Empty)
             {
