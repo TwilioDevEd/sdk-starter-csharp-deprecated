@@ -39,10 +39,7 @@ namespace sdkstarter.Controllers
 
             var grants = new HashSet<IGrant>();
 
-            var videoGrant = new VideoGrant
-            {
-                Room = "default room"
-            };
+            var videoGrant = new VideoGrant();
 
             grants.Add(videoGrant);
 
