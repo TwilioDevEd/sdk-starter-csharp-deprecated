@@ -24,7 +24,7 @@ dotnet restore
 ## Configure the sample application
 
 To run the application, you'll need to gather your Twilio account credentials and configure them
-in a file named `appsettings.json`. To create this file from an example template, do the following in your
+in a file named `appsettings.json` in the `src/sdkstarter` directory. To create this file from an example template, do the following in your
 Terminal.
 
 ```bash
