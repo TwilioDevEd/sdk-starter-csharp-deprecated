@@ -129,11 +129,11 @@ namespace sdkstarter.Controllers
                 bindingTypeStr);
 
             return BindingResource.Create(
-                _appSettings.TWILIO_NOTIFICATION_SERVICE_SID,
-                request.endpoint,
-                request.identity,
-                bindingType,
-                request.Address
+                pathServiceSid: _appSettings.TWILIO_NOTIFICATION_SERVICE_SID,
+                identity: request.identity,
+                endpoint: request.endpoint,
+                bindingType: bindingType,
+                address: request.Address
             );
         }
 
