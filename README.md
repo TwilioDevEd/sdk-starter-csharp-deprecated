@@ -12,14 +12,9 @@ to see which demos you can run. You'll find examples for [Chat](https://www.twil
 
 Let's get started!
 
-## Setup .NET Core SDK (If you don't have Visual Studio 2015/2017)
+## Setup .NET Core SDK
 
 1. Install [.NET Core](https://www.microsoft.com/net/core).
-
-### Restore Project Dependencies
-```bash
-dotnet restore
-```
 
 ## Configure the sample application
 
@@ -27,6 +22,12 @@ To run the application, you'll need to gather your Twilio account credentials an
 in a file named `appsettings.json` in the `src/sdkstarter` directory. To create this file from an example template, do the following in your
 Terminal.
 
+**Windows**
+```powershell
+copy appsettings.example.json appsettings.json
+```
+
+**OS X or Linux**
 ```bash
 cp appsettings.example.json appsettings.json
 ```
@@ -65,11 +66,12 @@ You will need to create a Notify Service through the [Twilio Console](https://ww
 
 ### Visual Studio
 
-Open `sdkstarter.sln` and hit *F5*
+Open `sdkstarter.sln` and press *F5* or click the Run button
 
 ### OS X or Linux
 
 ```bash
+dotnet restore
 cd src/sdkstarter
 dotnet run
 ```
