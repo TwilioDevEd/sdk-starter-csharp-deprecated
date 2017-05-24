@@ -19,12 +19,12 @@ Let's get started!
 ## Configure the sample application
 
 To run the application, you'll need to gather your Twilio account credentials and configure them
-in a file named `appsettings.json` in the `src/sdkstarter` directory. To create this file from an example template, do the following in your
-Terminal.
+in a file named `appsettings.json` in the `src/sdkstarter` directory. To create this file from an example template, do the following in your Terminal.
 
 **Windows**
 ```powershell
-copy appsettings.example.json appsettings.json
+cd src\sdkstarter
+copy .\appsettings.example.json .\appsettings.json
 ```
 
 **OS X or Linux**
@@ -68,11 +68,11 @@ You will need to create a Notify Service through the [Twilio Console](https://ww
 
 Open `sdkstarter.sln` and press *F5* or click the Run button
 
-### OS X or Linux
+### Windows CLI, OS X or Linux
 
 ```bash
-dotnet restore
 cd src/sdkstarter
+dotnet restore
 dotnet run
 ```
 
