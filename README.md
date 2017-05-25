@@ -76,7 +76,8 @@ dotnet restore
 dotnet run
 ```
 
-Your application should now be running at [http://localhost:3000/](http://localhost:3000/).
+Your application should now be running at [http://localhost:3000/](http://localhost:3000/). (If you are running from Visual Studio, a
+random port number may be selected as opposed to 3000.)
 
 ![Home Screen](https://cloud.githubusercontent.com/assets/809856/23171215/8107bd9e-f817-11e6-94c5-2b132d798fae.png)
 
