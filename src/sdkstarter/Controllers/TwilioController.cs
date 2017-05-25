@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Twilio;
@@ -87,7 +88,7 @@ namespace sdkstarter.Controllers
 
             return new JsonResult(new Dictionary<string, string>()
                 {
-                    { "message", "Binding Created!" }
+                    {"message", "Binding Created!"}
                 }
             );
         }
@@ -99,7 +100,7 @@ namespace sdkstarter.Controllers
 
             return new JsonResult(new Dictionary<string, string>()
             {
-                { "message", "Successful sending of notification."}
+                {"message", "Successful sending of notification."}
             });
         }
 
@@ -121,14 +122,37 @@ namespace sdkstarter.Controllers
 
         public virtual BindingResource CreateNotificationServiceBinding(RegisterRequest request)
         {
-            var bindingTypeStr = TitleCaseString(request.BindingType);
-            var bindingType = (BindingResource.BindingTypeEnum) Enum.Parse(typeof(BindingResource.BindingTypeEnum),
-                bindingTypeStr);
+            // This dumpster fire of a switch statement should be temporary
+            // until we introduce a way to parse the enum
+            BindingResource.BindingTypeEnum bindingType;
+            switch (request.BindingType.ToLower())
+            {
+                case "apn":
+                    bindingType = BindingResource.BindingTypeEnum.Apn;
+                    break;
+                case "fcm":
+                    bindingType = BindingResource.BindingTypeEnum.Fcm;
+                    break;
+                case "gcm":
+                    bindingType = BindingResource.BindingTypeEnum.Gcm;
+                    break;
+                case "sms":
+                    bindingType = BindingResource.BindingTypeEnum.Sms;
+                    break;
+                case "facebookmessenger":
+                    bindingType = BindingResource.BindingTypeEnum.FacebookMessenger;
+                    break;
+                case "alexa":
+                    bindingType = BindingResource.BindingTypeEnum.Alexa;
+                    break;
+                default:
+                    throw new Exception("Unknown binding type.");
+            }
+
 
             return BindingResource.Create(
                 pathServiceSid: _appSettings.TWILIO_NOTIFICATION_SERVICE_SID,
                 identity: request.identity,
-                endpoint: request.endpoint,
                 bindingType: bindingType,
                 address: request.Address
             );

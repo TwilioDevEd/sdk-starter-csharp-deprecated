@@ -9,7 +9,7 @@ using Xunit;
 namespace sdkstarter.Test
 {
     public class TwilioControllerTest
-    {   
+    {
         private static readonly Dictionary<string, string> _options = new Dictionary<string, string>
             {
                 { "TWILIO_ACCOUNT_SID", "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" },
@@ -76,7 +76,6 @@ namespace sdkstarter.Test
             {
                 Address = "test_address",
                 BindingType = "fcm",
-                endpoint = "",
                 identity = "000001"
             };
 
