@@ -8,24 +8,22 @@ $(function() {
         configureField(response, 'TWILIO_SYNC_SERVICE_SID', 'twilioSyncServiceSID', false);
 
         //configure individual product buttons
-        if (response.TWILIO_ACCOUNT_SID && response.TWILIO_ACCOUNT_SID != '' &&
-            response.TWILIO_API_KEY && response.TWILIO_API_KEY != '' && response.TWILIO_API_SECRET) {
+        if (configHasRequiredKeys(response, ['TWILIO_ACCOUNT_SID', 'TWILIO_API_KEY', 'TWILIO_API_SECRET'])) {
 
             $('#videoDemoButton').addClass('btn-success');
-
-            if (response.TWILIO_CHAT_SERVICE_SID && response.TWILIO_CHAT_SERVICE_SID != '') {
+            if (configHasRequiredKeys(response, ['TWILIO_CHAT_SERVICE_SID'])) {
                 $('#chatDemoButton').addClass('btn-success');
             } else {
                 $('#chatDemoButton').addClass('btn-danger');
             }
 
-            if (response.TWILIO_SYNC_SERVICE_SID && response.TWILIO_SYNC_SERVICE_SID != '') {
+            if (configHasRequiredKeys(response, ['TWILIO_SYNC_SERVICE_SID'])) {
                 $('#syncDemoButton').addClass('btn-success');
             } else {
                 $('#syncDemoButton').addClass('btn-danger');
             }
 
-            if (response.TWILIO_NOTIFICATION_SERVICE_SID && response.TWILIO_NOTIFICATION_SERVICE_SID != '') {
+            if (configHasRequiredKeys(response, ['TWILIO_NOTIFICATION_SERVICE_SID'])) {
                 $('#notifyDemoButton').addClass('btn-success');
             } else {
                 $('#notifyDemoButton').addClass('btn-danger');
@@ -41,7 +39,7 @@ $(function() {
 
     var configureField = function(response, keyName, elementId, masked) {
         if (masked) {
-            if (response[keyName]) {
+            if (isValidSid(response[keyName])) {
                 $('#' + elementId).html('Configured properly');
                 $('#' + elementId).addClass('set');
             } else {
@@ -49,13 +47,33 @@ $(function() {
                 $('#' + elementId).addClass('unset');
             }
         } else {
-            if (response[keyName] && response[keyName] != '') {
+            if (isValidSid(response[keyName])) {
                 $('#' + elementId).html(response[keyName]);
                 $('#' + elementId).addClass('set');
             } else {
-                $('#' + elementId).html('Not configured in .env');
+                $('#' + elementId).html(response[keyName] + ' Not configured in .env or invalid');
                 $('#' + elementId).addClass('unset');
             }
         }
     };
 });
+
+function isValidSid(key) {
+  if (key == null || key == '') {
+    return false;
+  } else {
+    return key.match(/X{3,}/) == null;
+  }
+}
+
+function configHasRequiredKeys(config, keys) {
+  var hasRequiredKeys = true;
+
+  keys.forEach(key => {
+    if (!isValidSid(config[key])) {
+      hasRequiredKeys = false;
+    }
+  });
+
+  return hasRequiredKeys;
+}
