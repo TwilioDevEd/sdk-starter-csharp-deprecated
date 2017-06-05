@@ -16,7 +16,7 @@ namespace sdkstarter
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:3000")
+                .UseUrls("http://0.0.0.0:3000")
                 .Build();
 
             host.Run();
