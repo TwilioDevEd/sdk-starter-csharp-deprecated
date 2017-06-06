@@ -116,7 +116,7 @@ namespace sdkstarter.Controllers
             return NotificationResource.Create(
                 _appSettings.TWILIO_NOTIFICATION_SERVICE_SID,
                 identities,
-                body: $"Hello, {identity}!"
+                body: "Hello, world!"
             );
         }
 
