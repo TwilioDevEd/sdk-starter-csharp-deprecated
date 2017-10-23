@@ -18,6 +18,11 @@ namespace sdkstarter.Controllers
         {
             _appSettings = appSettings.Value;
 
+            // if the Sync Service SID is blank, use the default Sync Service instead
+            if (_appSettings.TWILIO_SYNC_SERVICE_SID == String.Empty) {
+                _appSettings.TWILIO_SYNC_SERVICE_SID = "default";
+            }
+
             TwilioClient.Init(
                 _appSettings.TWILIO_API_KEY,
                 _appSettings.TWILIO_API_SECRET,
@@ -48,12 +53,12 @@ namespace sdkstarter.Controllers
             {
                 // Create a "grant" which enables a client to use IPM as a given user,
                 // on a given device.
-                var ipmGrant = new IpMessagingGrant()
+                var chatGrant = new ChatGrant()
                 {
                     ServiceSid = _appSettings.TWILIO_CHAT_SERVICE_SID,
                 };
 
-                grants.Add(ipmGrant);
+                grants.Add(chatGrant);
             }
 
             if (_appSettings.TWILIO_SYNC_SERVICE_SID != String.Empty)
