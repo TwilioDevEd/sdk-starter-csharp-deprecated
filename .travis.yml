@@ -1,7 +1,11 @@
-language: csharp
-dist: trusty
 sudo: required
-mono: none
-dotnet: 1.0.1
+dist: trusty
+
+cache:
+  apt: true
+
+services:
+  - docker
+
 script:
-      - ./build.sh --quiet verify
+  - docker build . -f Dockerfile.test --no-cache
