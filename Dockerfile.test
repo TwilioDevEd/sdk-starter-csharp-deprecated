@@ -1,0 +1,7 @@
+FROM microsoft/dotnet:1.1.5-sdk
+
+WORKDIR /src
+
+COPY . ./
+
+RUN ./test --quiet verify
