@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Twilio;
 using Twilio.Jwt.AccessToken;
 using Twilio.Rest.Notify.V1.Service;
+using Twilio.Rest.Sync.V1;
 
 namespace sdkstarter.Controllers
 {
@@ -28,6 +29,9 @@ namespace sdkstarter.Controllers
                 _appSettings.TWILIO_API_SECRET,
                 _appSettings.TWILIO_ACCOUNT_SID
             );
+
+            // Ensure that the Sync Default Service is provisioned
+            ServiceResource.Fetch("default");
         }
 
         [HttpGet("/config")]
