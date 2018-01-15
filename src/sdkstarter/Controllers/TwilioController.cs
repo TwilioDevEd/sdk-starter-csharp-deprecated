@@ -31,7 +31,7 @@ namespace sdkstarter.Controllers
             );
 
             // Ensure that the Sync Default Service is provisioned
-            ServiceResource.Fetch("default");
+            ProvisionSyncDefaultService(_appSettings.TWILIO_SYNC_SERVICE_SID);
         }
 
         [HttpGet("/config")]
@@ -165,6 +165,14 @@ namespace sdkstarter.Controllers
                 bindingType: bindingType,
                 address: request.Address
             );
+        }
+
+        private void ProvisionSyncDefaultService(string serviceSid)
+        {
+            if (_appSettings.TWILIO_SYNC_SERVICE_SID.Equals("default"))
+            {
+                ServiceResource.Fetch("default");
+            }
         }
 
         private string randomUserId()
